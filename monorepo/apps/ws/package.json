@@ -1,0 +1,20 @@
+{
+  "name": "ws",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@repo/db": "workspace:*",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/ws": "^8.5.12",
+    "esbuild": "^0.24.0",
+    "jsonwebtoken": "^9.0.2",
+    "ws": "^8.18.0"
+  }
+}
