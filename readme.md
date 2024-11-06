@@ -110,7 +110,3 @@ The frontend part of the application is slated for development. It will provide:
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-[Add your chosen license here]
