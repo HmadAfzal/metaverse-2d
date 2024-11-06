@@ -7,71 +7,97 @@ A monorepo project for a 2D metaverse application with real-time interactions.
 This project is organized as a monorepo with the following components:
 
 1. **ws**: WebSocket server for real-time communication
+   - Handles live user interactions, movements, and space updates
+   - Ensures low-latency communication for a smooth user experience
+
 2. **http**: HTTP server for REST API endpoints
+   - Manages user authentication, space creation, and data persistence
+   - Provides admin functionalities for managing the metaverse
+
 3. **frontend**: User interface (to be implemented)
+   - Will offer an intuitive, responsive interface for users to interact with the metaverse
+   - Planned to be built with modern frontend technologies (e.g., React, Next.js)
+
 4. **db**: Database package (shared across services)
+   - Handles data storage and retrieval for all components
+   - Ensures data consistency and efficient querying
 
-## Features
+## Key Features
 
-- User authentication (signup, signin)
-- User metadata and avatar management
-- Space creation, deletion, and management
-- Element manipulation within spaces
-- Admin-specific functionalities
-- Real-time user interactions via WebSockets
+- **User Authentication**: Secure signup and signin processes
+- **Avatar Customization**: Users can personalize their digital representations
+- **Space Management**: Create, join, and customize virtual spaces
+- **Real-time Interactions**: Live movement and actions within spaces
+- **Element Manipulation**: Add, remove, and update elements in the metaverse
+- **Admin Controls**: Powerful tools for managing the metaverse environment
 
-## API Endpoints
+## Detailed API Endpoints
 
 ### Authentication
-
-- `POST /api/v1/signup`: User registration
-- `POST /api/v1/signin`: User login
+- `POST /api/v1/signup`: Register a new user
+  - Accepts username, password, and user type (admin/user)
+- `POST /api/v1/signin`: Authenticate a user
+  - Returns a JWT token for authenticated requests
 
 ### User Management
-
 - `POST /api/v1/user/metadata`: Update user metadata
-- `GET /api/v1/user/metadata/bulk`: Get metadata for multiple users
+  - Allows users to update their profile information, including avatar
+- `GET /api/v1/user/metadata/bulk`: Retrieve metadata for multiple users
+  - Useful for populating user information in spaces
 
 ### Space Management
-
-- `POST /api/v1/space`: Create a new space
-- `GET /api/v1/space/all`: Get all spaces for a user
-- `GET /api/v1/space/:spaceId`: Get details of a specific space
-- `DELETE /api/v1/space/:spaceId`: Delete a space
+- `POST /api/v1/space`: Create a new virtual space
+  - Specify dimensions, name, and optional map ID
+- `GET /api/v1/space/all`: Retrieve all spaces for the authenticated user
+- `GET /api/v1/space/:spaceId`: Get detailed information about a specific space
+- `DELETE /api/v1/space/:spaceId`: Remove a space (creator only)
 
 ### Element Management
-
 - `POST /api/v1/space/element`: Add an element to a space
+  - Specify element ID, position (x, y), and space ID
 - `DELETE /api/v1/space/element`: Remove an element from a space
 
 ### Admin Endpoints
-
-- `POST /api/v1/admin/element`: Create a new element
-- `PUT /api/v1/admin/element/:elementId`: Update an element
-- `POST /api/v1/admin/map`: Create a new map
-- `POST /api/v1/admin/avatar`: Create a new avatar
+- `POST /api/v1/admin/element`: Create a new element type
+  - Define image URL, dimensions, and whether it's static
+- `PUT /api/v1/admin/element/:elementId`: Update an existing element type
+- `POST /api/v1/admin/map`: Create a new map template
+  - Specify thumbnail, dimensions, and default elements
+- `POST /api/v1/admin/avatar`: Add a new avatar option for users
 
 ## WebSocket Events
 
-- `join`: Join a space
-- `move`: Move within a space
-- `space-joined`: Confirmation of joining a space
-- `user-joined`: Notification when a new user joins
-- `movement`: Broadcast user movement
-- `movement-rejected`: Notification of invalid movement
-- `user-left`: Notification when a user leaves the space
+- `join`: Request to enter a specific space
+- `move`: Update user position within a space
+- `space-joined`: Confirmation of successful space entry
+- `user-joined`: Notification of a new user entering the space
+- `movement`: Broadcast of user movement to other participants
+- `movement-rejected`: Notification of an invalid movement attempt
+- `user-left`: Alert when a user exits the space
 
-## Testing
+## Comprehensive Testing
 
-The project includes a comprehensive test suite covering various functionalities. To run the tests:
+The project includes an extensive test suite covering various aspects of the application:
 
-1. Ensure all dependencies are installed
+- **Authentication Tests**: Ensure secure user registration and login
+- **User Metadata Tests**: Verify proper handling of user profile information
+- **Space Management Tests**: Validate creation, retrieval, and deletion of spaces
+- **Element Manipulation Tests**: Confirm proper handling of elements within spaces
+- **Admin Functionality Tests**: Ensure admin-only actions are properly restricted and functional
+- **WebSocket Communication Tests**: Verify real-time updates and proper event handling
+
+To run the tests:
+1. Ensure all dependencies are installed: `npm install` or `yarn install`
 2. Start the HTTP and WebSocket servers
-3. Run the test command (e.g., `npm test` or `jest`)
+3. Execute the test command: `npm test` or `yarn test`
 
-## Frontend (To Be Implemented)
+## Frontend Development (Upcoming)
 
-The frontend part of the application is yet to be developed. It will interact with the backend services to provide a user interface for the 2D metaverse experience.
+The frontend part of the application is slated for development. It will provide:
+- An intuitive user interface for navigating the 2D metaverse
+- Real-time rendering of spaces, avatars, and elements
+- Interactive controls for movement and element manipulation
+- Responsive design for various device sizes
 
 ## Getting Started
 
